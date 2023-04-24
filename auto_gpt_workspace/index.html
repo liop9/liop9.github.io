@@ -1,0 +1,90 @@
+		<script>
+			const form = document.getElementById('input-form');
+			const button = document.getElementById('submit-button');
+			form.addEventListener('submit', function(e) {
+				e.preventDefault();
+				const userInput = document.getElementById('user-prompt').value;
+				if(!userInput) {
+					alert('Please enter a prompt.');
+					return;
+				}
+				const xhr = new XMLHttpRequest();
+				xhr.open("GET", `https://api.promptgenius.ai/gpt?input=${userInput}`, true);
+				xhr.onload = function() {
+					if(xhr.status === 200) {
+						const response = JSON.parse(xhr.responseText);
+						const generatedPrompt = response.message;
+						// Display the generated prompt
+						const promptElement = document.getElementById('generated-prompt');
+						promptElement.innerHTML = generatedPrompt;
+
+						const promptSection = document.getElementById('prompt-section');
+						promptSection.style.display = 'block';
+					} else {
+						alert('Error generating prompt.');
+					}
+				}
+				xhr.onerror = function() {
+					alert('Error generating prompt.');
+				}
+				xhr.send();
+			});
+		</script>
+		<script>
+			const form = document.getElementById('input-form');
+			const button = document.getElementById('submit-button');
+			form.addEventListener('submit', function(e) {
+				e.preventDefault();
+				const userInput = document.getElementById('user-prompt').value;
+				if(!userInput) {
+					alert('Please enter a prompt.');
+					return;
+				}
+				const xhr = new XMLHttpRequest();
+				xhr.open("GET", `https://api.promptgenius.ai/gpt?input=${userInput}`, true);
+				xhr.onload = function() {
+					if(xhr.status === 200) {
+						const response = JSON.parse(xhr.responseText);
+						// Display the generated prompt to the user
+						alert(response.output);
+					} else {
+						alert('Error generating prompt.');
+					}
+				}
+				xhr.send();
+			});
+		
+			button.addEventListener('click', function() {
+				// Reset the input on button click
+				document.getElementById('user-prompt').value = '';
+			});
+		</script>
+		<script>
+			const form = document.getElementById('input-form');
+			const button = document.getElementById('submit-button');
+			form.addEventListener('submit', function(e) {
+				e.preventDefault();
+				const userInput = document.getElementById('user-prompt').value;
+				if(!userInput) {
+					alert('Please enter a prompt.');
+					return;
+				}
+				const xhr = new XMLHttpRequest();
+				xhr.open("GET", `https://api.promptgenius.ai/gpt?input=${userInput}`, true);
+				xhr.onload = function() {
+					if(xhr.status === 200) {
+						const response = JSON.parse(xhr.responseText);
+						// Display the generated prompt to the user
+						alert(response.output);
+					} else {
+						alert('Error generating prompt.');
+					}
+				}
+				xhr.send();
+			});
+
+			button.addEventListener('click', function() {
+				// Reset the input on button click
+				document.getElementById('user-prompt').value = '';
+			});
+		</script>
